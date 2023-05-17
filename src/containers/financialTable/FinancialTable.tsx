@@ -11,7 +11,7 @@ import {
 } from "./helpers";
 import "./FinancialTable.css";
 
-interface FinancialTableProps {
+export interface FinancialTableProps {
   tableData: Array<FinancialInstrument>;
 }
 
@@ -31,7 +31,7 @@ export default function FinancialTable(props: FinancialTableProps) {
   }
 
   return (
-    <table>
+    <table data-testid="financialTable">
       <thead>
         <tr>
           <TableHeader
@@ -74,6 +74,7 @@ export default function FinancialTable(props: FinancialTableProps) {
           <tr
             key={item.ticker}
             style={{ backgroundColor: getBackgroundColor(item.assetClass) }}
+            data-testid="financialTableRow"
           >
             <td>
               <p>{item.ticker}</p>
