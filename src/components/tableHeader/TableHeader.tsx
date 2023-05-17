@@ -2,7 +2,7 @@ import { MouseEventHandler } from "react";
 import SortIcon from "../../assets/svg/SortIcon";
 import "./TableHeader.css";
 
-interface TableHeaderProps {
+export interface TableHeaderProps {
   columnName: string;
   isDisabled: boolean;
   isSelected: boolean;
@@ -25,8 +25,13 @@ export default function TableHeader(props: TableHeaderProps) {
           disabled={isDisabled}
           onClick={handleSortButtonClick}
           className={isSelected ? "selectedButton" : ""}
+          data-testid="sortButton"
         >
-          <SortIcon height="1.5rem" width="1.5rem" isDisabled={isDisabled} />
+          <SortIcon
+            height="1.5rem"
+            width="1.5rem"
+            isDisabled={isDisabled}
+          />
         </button>
       </div>
     </th>

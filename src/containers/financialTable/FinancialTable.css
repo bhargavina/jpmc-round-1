@@ -1,0 +1,20 @@
+table {
+  table-layout: fixed;
+  width: 100vh;
+}
+
+table,
+th,
+td {
+  border: 1px solid #1A1A1A;
+  border-spacing: 0;
+}
+
+td > p {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.price {
+  font-weight: 600;
+}

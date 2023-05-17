@@ -2,7 +2,7 @@ import {
   AssetClass,
   FinancialInstrument,
   TableColumns,
-} from "./servies/TableData.types";
+} from "../../servies/TableData.types";
 
 export function getBackgroundColor(assetClass: string): string {
   switch (assetClass) {

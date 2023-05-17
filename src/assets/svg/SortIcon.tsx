@@ -6,18 +6,12 @@ interface SortIconProps {
 }
 
 export default function SortIcon(props: SortIconProps) {
-  const { isSelected = false, isDisabled = false } = props;
+  const { isDisabled = false } = props;
 
   function getFillColor() {
-    // if (isSelected) {
-    //   return "#FF0000";
-    // }
     if (isDisabled) {
       return "#A8A8A8";
     }
-    // if (!isSelected) {
-    //   return "#F8F8F8";
-    // }
     return "#1A1A1A";
   }
 
@@ -27,6 +21,7 @@ export default function SortIcon(props: SortIconProps) {
       height="48"
       viewBox="0 96 960 960"
       width="48"
+      data-testid="sortIcon"
     >
       <path
         d="M120 816v-60h240v60H120Zm0-210v-60h480v60H120Zm0-210v-60h720v60H120Z"
