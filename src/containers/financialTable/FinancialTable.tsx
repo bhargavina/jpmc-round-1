@@ -23,6 +23,7 @@ export default function FinancialTable(props: FinancialTableProps) {
   const sortedTableData = getSortedTableData(tableData, selectedSort);
 
   function handleSortButtonClick(clickedColumn: TableColumns): void {
+    // This helps each sort button act as a toggle button and unsort the rows
     if (selectedSort) {
       setSelectedSort(null);
     } else {
@@ -36,6 +37,8 @@ export default function FinancialTable(props: FinancialTableProps) {
         <tr>
           <TableHeader
             columnName="Ticker"
+            // A sort button is disabled if selectedSort is not null and the
+            // selectedSort must not be the current item
             isDisabled={
               selectedSort !== null && selectedSort !== TableColumns.TICKER
             }
@@ -76,15 +79,15 @@ export default function FinancialTable(props: FinancialTableProps) {
             style={{ backgroundColor: getBackgroundColor(item.assetClass) }}
             data-testid="financialTableRow"
           >
-            <td>
+            <td data-testid="tickerCell">
               <p>{item.ticker}</p>
             </td>
-            <td>
+            <td data-testid="priceCell">
               <p className="price" style={{ color: getPriceColor(item.price) }}>
                 {item.price}
               </p>
             </td>
-            <td>
+            <td data-testid="assetClassCell">
               <p>{item.assetClass}</p>
             </td>
           </tr>

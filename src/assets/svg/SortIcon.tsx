@@ -8,7 +8,7 @@ interface SortIconProps {
 export default function SortIcon(props: SortIconProps) {
   const { isDisabled = false } = props;
 
-  function getFillColor() {
+  function getFillColor(): string {
     if (isDisabled) {
       return "#A8A8A8";
     }

@@ -97,14 +97,40 @@ const mockTableData = [
 
 test("Renders the table", async () => {
   const financialTableProps: FinancialTableProps = {
-    tableData: mockTableData
-  }
+    tableData: mockTableData,
+  };
 
   render(<FinancialTable {...financialTableProps} />);
 
   const table = screen.getByTestId("financialTable");
   expect(table).toBeVisible();
 
+  const tickerHeading = screen.getByText("Ticker");
+  expect(tickerHeading).toBeVisible();
+
+  const priceHeading = screen.getByText("Price");
+  expect(priceHeading).toBeVisible();
+
+  const assetClassHeading = screen.getByText("Asset Class");
+  expect(assetClassHeading).toBeVisible();
+
   const rows = screen.getAllByTestId("financialTableRow");
-  expect(rows.length).toEqual(financialTableProps.tableData.length)
+  expect(rows.length).toEqual(financialTableProps.tableData.length);
+});
+
+test("Renders the cells correctly", async () => {
+  const financialTableProps: FinancialTableProps = {
+    tableData: mockTableData,
+  };
+
+  render(<FinancialTable {...financialTableProps} />);
+
+  const tickerCells = screen.getAllByTestId("tickerCell");
+  expect(tickerCells.length).toEqual(financialTableProps.tableData.length);
+
+  const priceCells = screen.getAllByTestId("priceCell");
+  expect(priceCells.length).toEqual(financialTableProps.tableData.length);
+
+  const assetClassCells = screen.getAllByTestId("assetClassCell");
+  expect(assetClassCells.length).toEqual(financialTableProps.tableData.length);
 });

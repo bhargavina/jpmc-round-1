@@ -5,6 +5,7 @@ import {
 } from "../../servies/TableData.types";
 
 export function getBackgroundColor(assetClass: AssetClass | string): string {
+  // Get backgroundColor based on assetClass
   switch (assetClass) {
     case AssetClass.MACRO: {
       return "#FFF";
@@ -21,6 +22,7 @@ export function getBackgroundColor(assetClass: AssetClass | string): string {
 }
 
 export function getPriceColor(price: number): string {
+  // If the price of a financial instrument is negative, it should have red color
   if (price >= 0) {
     return "#000";
   }
@@ -33,13 +35,15 @@ export function getSortedTableData(
 ): Array<FinancialInstrument> | null {
   switch (selectedSort) {
     case TableColumns.PRICE: {
+      // Returns a copy of the tableData where the rows are sorted in descending order of their price
       const copy = tableData.map((item) => ({ ...item }));
       return copy.sort(
-        (a: FinancialInstrument, b: FinancialInstrument) => a.price - b.price
+        (a: FinancialInstrument, b: FinancialInstrument) => b.price - a.price
       );
     }
     case TableColumns.TICKER: {
       const copy = tableData.map((item) => ({ ...item }));
+      // Returns a copy of the tableData where the rows are sorted in alphabetical order of their ticker names
       return copy.sort((a: FinancialInstrument, b: FinancialInstrument) => {
         if (a.ticker < b.ticker) {
           return -1;
@@ -53,6 +57,7 @@ export function getSortedTableData(
     case TableColumns.ASSET_CLASS: {
       const sortedArray: Array<FinancialInstrument> = [];
       const sortedObject: any = {};
+      // sortedObject stores all the items of tableData according to its asset class
       tableData.forEach((item: FinancialInstrument) => {
         if (sortedObject.hasOwnProperty(item.assetClass)) {
           sortedObject[item.assetClass] = [
@@ -63,6 +68,7 @@ export function getSortedTableData(
           sortedObject[item.assetClass] = [item];
         }
       });
+      // According to the order of the asset class specified, the items are added to the sortedArray
       sortedObject[AssetClass.EQUITIES].forEach((item: FinancialInstrument) =>
         sortedArray.push(item)
       );
