@@ -4,17 +4,8 @@ import {
   TableColumns,
 } from "../../servies/TableData.types";
 
-export function getBackgroundColor(assetClass: string): string {
+export function getBackgroundColor(assetClass: AssetClass | string): string {
   switch (assetClass) {
-    // case AssetClass.MACRO: {
-    //   return "#FFF";
-    // }
-    // case AssetClass.EQUITIES: {
-    //   return "#D7E5F0";
-    // }
-    // case AssetClass.CREDIT: {
-    //   return "#D6F2D5";
-    // }
     case AssetClass.MACRO: {
       return "#FFF";
     }
@@ -38,7 +29,7 @@ export function getPriceColor(price: number): string {
 
 export function getSortedTableData(
   tableData: Array<FinancialInstrument>,
-  selectedSort: TableColumns | null,
+  selectedSort: TableColumns | null
 ): Array<FinancialInstrument> | null {
   switch (selectedSort) {
     case TableColumns.PRICE: {
@@ -62,7 +53,7 @@ export function getSortedTableData(
     case TableColumns.ASSET_CLASS: {
       const sortedArray: Array<FinancialInstrument> = [];
       const sortedObject: any = {};
-      tableData.forEach((item) => {
+      tableData.forEach((item: FinancialInstrument) => {
         if (sortedObject.hasOwnProperty(item.assetClass)) {
           sortedObject[item.assetClass] = [
             ...sortedObject[item.assetClass],
