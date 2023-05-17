@@ -1,0 +1,22 @@
+.tableHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.tableHeader > h4 {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+button {
+  background-color: #fff;
+  border: none;
+}
+
+.selectedButton {
+  border: 1px solid #FAFAFA;
+  box-shadow: 1px 1px #888888;
+}
